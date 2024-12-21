@@ -4,15 +4,11 @@ from docx.shared import Inches
 #import os
 import streamlit as st
 from lxml import etree
-import locale
 from datetime import datetime
-
-# Set locale for number formatting (use an appropriate locale, e.g., "en_US.UTF-8")
-locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
 # Function to format numbers as "xxx.xxx,xx"
 def format_number(value):
-    return locale.format_string("%.2f", value, grouping=True).replace(",", ".").replace(".", ",", 1)
+    return f"{value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 # Function to replace placeholders in text boxes
 def replace_text_in_text_boxes(doc, placeholders):
