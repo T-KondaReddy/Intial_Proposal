@@ -6,9 +6,9 @@ import streamlit as st
 from lxml import etree
 from datetime import datetime
 
-# Function to format numbers as "xxx.xxx,xx"
 def format_number(value):
-    return f"{value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    """Format numbers as 'xxx,xxx.xx'."""
+    return f"{value:,.2f}"
 
 # Function to replace placeholders in text boxes
 def replace_text_in_text_boxes(doc, placeholders):
@@ -133,7 +133,7 @@ if st.button("Generate and Download DOCX"):
             "{{City}}" : City,
             "{{Postcode}}" : Post_code,
             "{{date}}" : Pdate.strftime("%d/%m/%Y"),  # Format date
-            "{{Annual spend}}" : f"{annual_spend:.2f}",
+            "{{Annual spend}}" : f"{format_number(annual_spend)}",
             "{{Annual Consumption kWh}}": f"{format_number(annual_consumption)}",
             "{{tariff}}": f"{tarif}",
             "{{VO Size}}": vo_size,
