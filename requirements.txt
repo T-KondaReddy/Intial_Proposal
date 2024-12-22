@@ -2,3 +2,6 @@ python-docx
 lxml
 streamlit
 pytz
+matplotlib
+pandas
+os
